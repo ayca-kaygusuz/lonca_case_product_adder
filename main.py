@@ -1,12 +1,21 @@
+# ©️ Ayça Kaygusuz 2024
+
 import logging
 from parser import ProductParser
 from product_repository import ProductRepository
-from config import DB_URI, XML_FILE_PATH
+from config import DB_URI
 
 def main():
     logging.basicConfig(level=logging.INFO)
     
-    product_repo = ProductRepository(DB_URI, 'lonca_scraper')
+    # prompt for user to enter the XML path
+    XML_FILE_PATH = input("Please enter the path to the XML file (Example: C:\Downloads): ")
+    
+    # Prompt user for the database URI
+    # if blank, use default MongoDB URI mongodb://localhost:27017/
+    custom_db_uri = input(f"Please enter the database URI or no input to use the default URI: {DB_URI}): ") or DB_URI
+    
+    product_repo = ProductRepository(custom_db_uri, 'lonca_scraper')
 
     try:
         products = ProductParser.parse_xml(XML_FILE_PATH)
