@@ -39,20 +39,20 @@ class ProductParser:
             fabric, product_measurements, sample_size, model_measurements = ProductParser.extract_details(description)
 
             product = Product(
-                stock_code=stock_code,
-                name=name,
-                color=[details.get('Color', '').capitalize()],
-                price=float(details.get('Price', '0').replace(',', '.')),
-                discounted_price=float(details.get('DiscountedPrice', '0').replace(',', '.')),
-                images=images,
-                quantity=int(details.get('Quantity', '0')),
-                fabric=fabric,
-                product_measurements=product_measurements,
-                model_measurements=model_measurements,
-                sample_size=sample_size,
-                series=details.get('Series', ''),
-                created_at=datetime.now(),
-                updated_at=datetime.now()
+                stock_code = stock_code,
+                name = name,
+                color = [details.get('Color', '').capitalize()],
+                price = float(details.get('Price', '0').replace(',', '.')),
+                discounted_price = float(details.get('DiscountedPrice', '0').replace(',', '.')),
+                images = images,
+                quantity = int(details.get('Quantity', '0')),
+                fabric = fabric,
+                product_measurements = product_measurements,
+                model_measurements = model_measurements,
+                sample_size = sample_size,
+                series = details.get('Series', ''),
+                created_at = datetime.now(),
+                updated_at = datetime.now()
             )
             products.append(product)
 

@@ -13,7 +13,7 @@ def main():
     
     # Prompt user for the database URI
     # if blank, use default MongoDB URI mongodb://localhost:27017/
-    custom_db_uri = input(f"Please enter the database URI or no input to use the default URI: {DB_URI}): ") or DB_URI
+    custom_db_uri = input(f"Please enter the database URI or no input to use the default URI: {DB_URI}: ") or DB_URI
     
     product_repo = ProductRepository(custom_db_uri, 'lonca_scraper')
 
