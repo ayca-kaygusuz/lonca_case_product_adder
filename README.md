@@ -56,14 +56,14 @@ The application expects the XML file to be structured in a specific format. Belo
     <Product ProductId="PRODUCT_ID" Name="PRODUCT_NAME">
         <Images>
             <Image Path="IMAGE_URL_1"></Image>
-            <Image Path="IMAGE_URL_2"></Image>
-            <Image Path="IMAGE_URL_3"></Image>
+            <!-- Can add more Image URLs with the same format. It's stored as an array either way. -->
         </Images>
         <ProductDetails>
             <ProductDetail Name="Price" Value="PRODUCT_PRICE"/>
             <ProductDetail Name="DiscountedPrice" Value="PRODUCT_DISCOUNTED_PRICE"/>
             <ProductDetail Name="ProductType" Value="PRODUCT_TYPE"/>
             <ProductDetail Name="Quantity" Value="PRODUCT_QUANTITY"/>
+            <!-- Colors are also in array format, can use multiple color entries -->
             <ProductDetail Name="Color" Value="PRODUCT_COLOR"/>
             <ProductDetail Name="Series" Value="PRODUCT_SERIES"/>
             <ProductDetail Name="Season" Value="PRODUCT_SEASON"/>
