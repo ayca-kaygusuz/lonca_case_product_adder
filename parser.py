@@ -6,6 +6,7 @@ from datetime import datetime
 from product import Product
 
 class ProductParser:
+    
     @staticmethod
     def extract_details(description):
         clean_description = description.strip()

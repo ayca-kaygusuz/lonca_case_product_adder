@@ -10,6 +10,7 @@ class ProductRepository:
         self.collection = self.db['products']
 
     def upsert_product(self, product):
+        # Prepare the product data for the database
         product_data = {
             'stock_code': product.stock_code,
             'name': product.name,
@@ -23,16 +24,22 @@ class ProductRepository:
             'model_measurements': product.model_measurements,
             'sample_size': product.sample_size,
             'series': product.series,
-            'createdAt': product.created_at,
-            'updatedAt': datetime.now()  # Update timestamp on every upsert
+            'updatedAt': datetime.now()  # Always update this timestamp
         }
 
-        # Upsert logic: Check if the product exists
-        existing_product = self.collection.find_one({'stock_code': product.stock_code})
-        if existing_product:
-            # Update the existing product
-            self.collection.update_one({'stock_code': product.stock_code}, {'$set': product_data})
-        else:
-            # Insert new product
-            product_data['createdAt'] = datetime.now()
-            self.collection.insert_one(product_data)
+        # Prepare the upsert query
+        upsert_query = {
+            'stock_code': product.stock_code
+        }
+
+        # Use $set to update fields, and set createdAt only if inserting
+        self.collection.update_one(
+            upsert_query,
+            {
+                '$set': product_data,
+                '$setOnInsert': {
+                    'createdAt': datetime.now()  # Only set this on insert
+                }
+            },
+            upsert = True  # Perform insert if not found
+        )

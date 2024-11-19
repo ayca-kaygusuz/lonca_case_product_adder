@@ -6,7 +6,9 @@ from product_repository import ProductRepository
 from config import DB_URI
 
 def main():
-    logging.basicConfig(level=logging.INFO)
+    
+    # customized logging so it prints the cleaner message without INFO:root and ERROR:root identifiers
+    logging.basicConfig(level=logging.INFO, format='%(message)s')
     
     # prompt for user to enter the XML path
     XML_FILE_PATH = input("Please enter the path to the XML file (Example: C:\Downloads): ")
